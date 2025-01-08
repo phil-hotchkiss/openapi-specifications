@@ -13,103 +13,6 @@ tags:
   - name: template-sets
     description: Template Set Management
 paths:
-  /template-sets: 
-    post: 
-      description: Create a template set
-      tags: 
-        - template-sets
-      summary: Create a template set
-      operationId: createTemplateSet
-      requestBody: 
-        content: 
-          application/json: 
-            schema: 
-              $ref: '#/components/schemas/TemplateSet'
-      responses: 
-        '201': 
-          description: Created
-          content: 
-            application/json: 
-              schema: 
-                $ref: '#/components/schemas/TemplateSetCreateSuccessResponse'
-    get: 
-      tags: 
-        - template-sets
-      summary: Get template sets by query parameters
-      operationId: queryTemplateSets
-      description: Get template sets by query parameters
-      parameters: 
-        - in: query
-          name: sendGridTemplateId
-          required: false
-          schema: 
-            type: string
-        - in: query
-          name: templateSetName
-          required: false
-          schema: 
-            type: string
-      responses: 
-        '200': 
-          description: OK
-          content: 
-            application/json: 
-              schema: 
-                $ref: '#/components/schemas/QueryTemplateSetSuccessResponse'
-  /template-sets/{id}: 
-    get: 
-      tags: 
-        - template-sets
-      description: Get a template set by id
-      parameters: 
-        - in: path
-          name: id
-          required: true
-          schema: 
-            type: string
-            format: guid
-      summary: Get a template set
-      operationId: getTemplateSet
-      responses: 
-        '200': 
-          description: Ok
-          content: 
-            application/json: 
-              schema: 
-                $ref: '#/components/schemas/GetTemplateSetSuccessResponse'
-    patch: 
-      tags: 
-        - template-sets
-      description: Update a template set
-      parameters: 
-        - in: path
-          name: id
-          required: true
-          schema: 
-            type: string
-            format: guid
-      summary: Update a template set 
-      operationId: updateTemplateSet
-      requestBody: 
-        content: 
-          application/json: 
-            schema: 
-              $ref: '#/components/schemas/TemplateSet'
-      responses: 
-        '204': 
-          description: No Content
-        '400': 
-          description: Bad Request
-          content: 
-            application/json: 
-              schema: 
-                $ref: "#/components/schemas/ErrorResponse"
-        '404': 
-          description: Not Found
-          content: 
-            application/json: 
-              schema: 
-                $ref: "#/components/schemas/ErrorResponse"
   /templated-email: 
     post: 
       tags: 
@@ -198,63 +101,6 @@ components:
         deleted: 
           type: string
           format: date-time
-    VersionedSuccessResponseData: 
-      allOf: 
-      - $ref: '#/components/schemas/SuccessResponseData'
-      - type: object
-        properties: 
-          etag: 
-            type: string
-    PartialGetSuccessResponseData: 
-      allOf: 
-      - $ref: '#/components/schemas/SuccessResponseData'
-      - type: object
-        properties: 
-          fields: 
-            type: string
-    PreviousNextSuccessResponseData: 
-      allOf: 
-        - $ref: '#/components/schemas/SuccessResponseData'
-        - type: object
-          properties: 
-            previousLink: 
-              type: string
-            nextLink: 
-              type: string
-            itemsPerPage: 
-              type: integer
-            startIndex: 
-              type: integer
-            totalItems: 
-              type: integer
-            currentItemCount: 
-              type: integer
-    PageBasedPagingResponseData: 
-      allOf: 
-        - $ref: '#/components/schemas/SuccessResponseData'
-        - type: object
-          properties: 
-            pageIndex:
-              type: integer
-            totalPages: 
-              type: integer
-            totalItems: 
-              type: integer
-            currentItemCount: 
-              type: integer
-    IndexBasedResponseData: 
-      allOf: 
-      - $ref: '#/components/schemas/SuccessResponseData'
-      - type: object
-        properties: 
-          itemsPerPage: 
-            type: integer
-          startIndex: 
-            type: integer
-          totalItems: 
-            type: integer
-          currentItemCount: 
-            type: integer
     Response: 
       externalDocs:
         url: 'https://google.github.io/styleguide/jsoncstyleguide.xml'
@@ -307,26 +153,6 @@ components:
         properties: 
           error: 
             $ref: '#/components/schemas/ResponseError'
-      
-    PreviousNextPagingSuccessResponse: 
-      allOf: 
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        required: 
-        - apiVersion
-          
-    IndexBasedPagingSuccessResponse: 
-      allOf: 
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        required: 
-        - apiVersion
-    PageBasedPagingSuccessResponse: 
-      allOf: 
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        required: 
-        - apiVersion
     TemplateSet: 
       type: object
       properties: 
