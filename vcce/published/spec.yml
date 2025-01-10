@@ -1,8 +1,10 @@
 openapi: 3.0.0
 info:
-  description: 'This API is responsible for enabling communication with SendGrid. It implements additional features such as data retention and A/B Testing for specific templates'
-  version: '4.0'
-  title: XCom.API Published
+  description: | 
+    ### VUHL CRM - Customer Engagement 
+    This domain is intended for Customer Engagement Activities. Customer Engagement is responsible for Managing engagement efforts for retention, intake, and satisfying needs. This includes adding tasks, creating communications, and monitoring for retention risk.'
+  version: '1.0'
+  title: VCCE - Published
   contact:
     email: phil.hotchkiss@veteransunited.com
 tags:
