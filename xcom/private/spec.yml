@@ -7,7 +7,7 @@ info:
     email: phil.hotchkiss@veteransunited.com
 tags:
   - name: mail
-\  - name: connect
+  - name: connect
     description: Webhook Behavior
   - name: template-sets
     description: Template Set Management
